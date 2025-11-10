@@ -1,0 +1,30 @@
+name: Node.js CI Build and Test
+
+on:
+  push:
+    branches: [ "main", "dev-david" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 1. Configura Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Usamos una versión moderna LTS
+
+      # 2. Instala las dependencias (Jest)
+      - name: Install Dependencies
+        run: npm install
+
+      # 3. Corre las pruebas
+      # Este comando ejecutará Jest Y revisará la cobertura del 90%
+      - name: Run Tests & Check Coverage
+        run: npm test
