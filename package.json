@@ -1,39 +1,12 @@
 {
-  "name": "bookingmx-graph-module",
+  "name": "sprint2_bookingmx",
   "version": "1.0.0",
-  "description": "Sprint 2 - Graph visualization module for BookingMx",
-  "main": "graph.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "test": "jest --coverage"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/LuisDavid0912/BookingMx-Graph-Module.git"
-  },
-  "keywords": [
-    "jest",
-    "javascript",
-    "graphs"
-  ],
-  "author": "Luis David & Diego G",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/LuisDavid0912/BookingMx-Graph-Module/issues"
-  },
-  "homepage": "https://github.com/LuisDavid0912/BookingMx-Graph-Module#readme",
-  "devDependencies": {
-    "jest": "^29.7.0"
-  },
-  "type": "commonjs",
-
-  "jest": {
-    "coverageThreshold": {
-      "global": {
-        "branches": 90,
-        "functions": 90,
-        "lines": 90,
-        "statements": 90
-      }
-    }
-  }
+  "test": "jest --coverage"
+},
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
