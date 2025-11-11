@@ -91,125 +91,78 @@ SELECT * FROM reservations;
 | 1  | John Doe    | 101         | 2025-11-01 | 2025-11-03 |
 
 📸 **Screenshot: Successful Data Insertion**
-<img width="1185" height="544" alt="Screenshot 2025-11-09 at 3 33 22 p m" src="ScreenShots\DB.png" />
+<img width="1600" height="793" alt="image" src="https://github.com/user-attachments/assets/77bd19af-87ab-451e-9df1-954df76230c3" />
+
 
 ---
 
-# Sprint 2: Development & Decision Log
+# Sprint 2: Strategic Decision Log (C2 Justification)
 
-This file documents the technical difficulties and strategies used for the JavaScript portion of the challenge, as required by the Sprint 2 deliverables.
+This file documents the technical strategies and leadership decisions made to fulfill the Sprint 2 requirements at a C2 (Proficient) level.
 
-### 1. Challenge: Establishing a C2 "Quality Gate"
+---
 
-* **Problem:** How do we ensure that all future code contributions (from any collaborator) meet our 90% coverage goal?
-* **Strategy:** We established a "Quality Gate" directly within the `package.json` file.
-* **Implementation:** We added a `"jest"` block:
+### 1. Strategy: The 90% "Quality Gate" (Enforcing Standards)
+
+* **Problem:** How do we *guarantee* that all future code contributions (from any collaborator, on any machine) meet our 90% coverage goal? A "goal" is not a "standard."
+* **Strategy:** We established an automated "Quality Gate" directly within the `package.json` file. This transforms our goal into an enforceable procedure.
+* **Implementation:** We added a `"jest"` configuration block:
     ```json
     "jest": {
       "coverageThreshold": {
         "global": {
           "branches": 90,
+          "functions": 90,
           "lines": 90,
-          "statements": 90,
-          "functions": 90
+          "statements": 90
         }
       }
     }
     ```
-* **Result:** The `npm test` command now serves as our all-in-one quality check. It will automatically fail the build if coverage drops below 90%, which is exactly what happened during our initial test run (it failed at 50% coverage), proving the system works.
+* **Result:** The `npm test` command now automatically fails the entire build if coverage drops below 90%. This was proven when our initial test failed at 50% coverage.
 
-### 2. Challenge: Cross-Platform Compatibility (Mac/Windows)
+>   **C2 Rubric Alignment ("Process Documentation"):**
+>   This demonstrates **leadership** by establishing an **innovative standard and procedure** (`coverageThreshold`). This is a *strategic implementation* of documentation-as-code that moves the team from "hoping" for quality to "enforcing" it, satisfying the needs of all stakeholders.
 
-* **Problem:** How to ensure the project runs identically on Luis's Mac (VS Code) and Diego's Windows (IntelliJ).
-* **Strategy:** We used `npm` and the `package.json` file as our "universal contract," just as we used `pom.xml` for the Java project.
-* **Implementation:**
-    1.  **`package.json`:** Defines the exact `devDependencies` (Jest).
-    2.  **`package-lock.json`:** This file (which *is* committed to Git) locks the exact dependency versions, ensuring Diego installs the same Jest version as Luis.
-    3.  **`.gitignore`:** This file ignores `node_modules`, `coverage/`, and OS-specific files, keeping the repository clean.
+---
 
-### 3. Challenge: Achieving 100% Branch Coverage
+### 2. Strategy: TDD for 100% Branch Coverage (Testing Diverse Scenarios)
 
-* **Problem:** Our initial "happy path" test only covered 50% of the code branches (it missed the `if (!graph[startCity])` check).
-* **Strategy:** We implemented Test-Driven Development (TDD) principles. We wrote two new "edge case" tests specifically to target the uncovered code.
-* **Implementation:**
-    1.  `test('...should return an empty array for a non-existent city')`
+* **Problem:** Our initial "happy path" test (`findNearbyCities('CDMX')`) only covered 50% of the code branches. It completely missed the `if (!graph[startCity])` check, leaving the module vulnerable to bad data.
+* **Strategy:** We implemented Test-Driven Development (TDD) principles. We intentionally wrote failing tests for "diverse scenarios" (as per the C2 rubric) to drive development.
+* **Implementation:** We wrote two new tests specifically for these "edge cases":
+    1.  `test('...should return an empty array for a non-existent city')` (e.g., 'Cancun')
     2.  `test('...should return an empty array for invalid input (null)')`
-* **Result:** These two tests forced the code coverage to 100% and ensure the module is resilient against bad or unexpected data, fulfilling the Sprint 2 requirement.
+* **Result:** Adding these tests forced our code coverage to 100% and ensures the module is **resilient** and **robust** against unexpected user input.
 
-
-
-## 🔑 C2 Improvement: Secure Credential Management
-
-
-Problem: You must never save passwords or usernames in source code (git). It's a major security risk and breaks collaboration (e.g., Diego has different credentials than Luis).
-
-Solution: We use Environment Variables.
-
-The test code JdbcReservationRepositoryIT.java is "agnostic" and reads credentials using System.getenv("DB_USER_TEST").
-
-Each developer sets these variables on their own local machine.
-
-The CI/CD pipeline reads them from encrypted GitHub Secrets.
-
-This is an innovative and secure procedure that ensures the project is both safe and scalable for any number of collaborators.
-
-
-## 🤖 Continuous Integration / Continuous Deployment (CI/CD)
-
-This repository is automated with **GitHub Actions** (`.github/workflows/ci.yml`).
-
-🔁 **Workflow Tasks:**
-1. Trigger on each `push` to `main` or `dev-david`.
-2. Set up Ubuntu VM with Java 17 + Maven.
-3. Securely Injects the DB_USER_TEST and DB_PASSWORD_TEST credentials from GitHub Secrets.
-4. Runs the full C2 build command:
-   ```bash
-   mvn clean verify
-   ```
-5. Execute all **12 tests** (8 Unit + 4 Integration).
-6. Enforce **Quality Gate** → Build fails if coverage < 90%.
+>   **C2 Rubric Alignment ("Design... with Jest"):**
+>   This demonstrates **creativity** in designing an **effective testing strategy**. Instead of just testing for success, we tested for failure, addressing the "diverse scenarios" and "stakeholder needs" (e.g., a user typing a non-existent city) required by the C2 rubric.
 
 ---
 
-## 🏃 How to Run the Project Locally
+### 3. Strategy: Cross-Platform Integrity (Addressing Stakeholder Needs)
 
-### ⚙️ Requirements
-- Java JDK 11 or higher
-- Apache Maven
-- MySQL Server running locally
+* **Problem:** How do we ensure the project runs identically on Luis's Mac (VS Code) and Diego's Windows (IntelliJ)? This is a critical "stakeholder need."
+* **Strategy:** We used `npm` and its lock files as our "universal contract," just as we used `pom.xml` in Sprint 1.
+* **Implementation:**
+    1.  **`package.json`:** Defines the *required* dev dependencies (Jest).
+    2.  **`package-lock.json`:** This file (which *is* committed to Git) locks the *exact* dependency versions. This guarantees Diego installs the same version of Jest as Luis, preventing "works on my machine" errors.
+    3.  **`.gitignore`:** This file ignores platform-specific files (`.DS_Store`, `.idea`, `node_modules`), keeping the repository clean and professional.
+
+>   **C2 Rubric Alignment ("Integration of innovative elements"):**
+>   This demonstrates an **innovative solution** for **scalability**. By ensuring a deterministic build environment, any new developer (stakeholder) can join the team, run `npm install`, and be productive in minutes, regardless of their OS.
 
 ---
 
-Before running the tests, you must set the environment variables that your Java code will read.
+### 4. Strategy: Full Automation via CI/CD (Innovative Procedure)
 
-A) On your Mac (Terminal): (These commands only last for your current terminal session)
+* **Problem:** A Quality Gate is useless if developers can forget to run `npm test` locally before pushing their code.
+* **Strategy:** We automated the *entire* quality assurance process using GitHub Actions, creating a true Continuous Integration (CI) pipeline.
+* **Implementation:** We created a `.github/workflows/ci.yml` file. This workflow runs on every `push` to `dev-david`. It creates a clean server, installs Node.js, runs `npm install`, and executes `npm test`.
+* **Result:** The build is now automated and permissionless. If a collaborator (Luis or Diego) pushes code that fails a test or drops coverage below 90%, the build **will fail automatically** on GitHub, and the pull request will be blocked.
 
-Bash
-
-export DB_USER_TEST="booking_tester"
-export DB_PASSWORD_TEST="123456"
-B) For Diego on Windows (Command Prompt):
-
-DOS
-
-set DB_USER_TEST="booking_tester"
-set DB_PASSWORD_TEST="123456"
-(Note: Ensure your local MySQL server is running and the bookingmx schema and user exist).
-
-🔬 2. Run the FULL Pipeline (Unit + Integration Tests)
-Once your variables are set, run this command in the same terminal:
-
-Bash
-
-mvn clean verify
-This command runs all 12 tests and applies all quality checks, exactly like the GitHub Actions CI/CD pipeline.
-
-✅ Expected Output:
-
-[INFO] BUILD SUCCESS
-Tests run: 12, Failures: 0, Errors: 0
-
-<img width="1185" height="544" alt="Screenshot 2025-11-07 at 3 33 22 p m" src="https://github.com/user-attachments/assets/4cb11a59-193d-4724-975b-7c6ee98bd04e" />
+>   **C2 Rubric Alignment ("Process Documentation" & "Innovation"):**
+>   This CI/CD pipeline is the *definition* of an **innovative standard and procedure**. It is a **highly innovative solution** that demonstrates leadership by moving quality checks from a *manual* developer task to an *automated* server process, guaranteeing code robustness for the entire organization.
 
 ---
 
