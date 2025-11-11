@@ -91,7 +91,7 @@ SELECT * FROM reservations;
 | 1  | John Doe    | 101         | 2025-11-01 | 2025-11-03 |
 
 📸 **Screenshot: Successful Data Insertion**
-<img width="1600" height="793" alt="image" src="https://github.com/user-attachments/assets/77bd19af-87ab-451e-9df1-954df76230c3" />
+<img width="1185" height="544" alt="Screenshot 2025-11-07 at 3 33 22 p m" src="https://github.com/user-attachments/assets/95e3d77b-0d0e-44a5-82c7-f21a68e6de2d" />
 
 
 ---
@@ -165,6 +165,9 @@ This file documents the technical strategies and leadership decisions made to fu
 >   This CI/CD pipeline is the *definition* of an **innovative standard and procedure**. It is a **highly innovative solution** that demonstrates leadership by moving quality checks from a *manual* developer task to an *automated* server process, guaranteeing code robustness for the entire organization.
 
 ---
+
+📸 **Screenshot: Successful Data Insertion**
+<img width="1600" height="793" alt="image" src="https://github.com/user-attachments/assets/77bd19af-87ab-451e-9df1-954df76230c3" />
 
 ## 📚 Project Documentation
 
