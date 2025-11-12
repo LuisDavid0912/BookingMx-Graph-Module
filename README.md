@@ -21,50 +21,21 @@ The goal is to demonstrate a scalable testing strategy with CI/CD automation, mu
 
 ## 🗺️ System Diagrams
 
-<details>
-<summary><strong>Architecture Overview</strong></summary>
+### 🗺️ Architecture Overview
+![Architecture Overview](assets/diagrams/architecture.png)
 
-<p align="center">
-  <img src="assets/diagrams/architecture.png" alt="Architecture Overview (Java, MySQL, JS, CI/CD)" width="900">
-</p>
+### 🧱 Java Core — Class Diagram
+![Class Diagram](assets/diagrams/class-core.png)
 
-</details>
+### 🔁 Sequence — Create Reservation
+![Sequence Create Reservation](assets/diagrams/sequence-create-reservation.png)
 
-<details>
-<summary><strong>Java Core — Class Diagram</strong></summary>
+### 🌐 JS Module Interaction
+![JS Module Interaction](assets/diagrams/js-module-interaction.png)
 
-<p align="center">
-  <img src="assets/diagrams/class-core.png" alt="Class Diagram: ReservationService, Repository, JdbcReservationRepository" width="900">
-</p>
+### 🤖 CI/CD Pipeline
+![CI/CD Pipeline](assets/diagrams/cicd-pipeline.png)
 
-</details>
-
-<details>
-<summary><strong>Sequence — Create Reservation</strong></summary>
-
-<p align="center">
-  <img src="assets/diagrams/sequence-create-reservation.png" alt="Sequence Diagram: Create Reservation flow" width="900">
-</p>
-
-</details>
-
-<details>
-<summary><strong>JS Module Interaction</strong></summary>
-
-<p align="center">
-  <img src="assets/diagrams/js-module-interaction.png" alt="JS Module Interaction: validation and outputs" width="900">
-</p>
-
-</details>
-
-<details>
-<summary><strong>CI/CD Pipeline</strong></summary>
-
-<p align="center">
-  <img src="assets/diagrams/cicd-pipeline.png" alt="CI/CD Pipeline: push → build → tests → quality gates" width="900">
-</p>
-
-</details>
 
 
 ## 🚀 Alignment with C2 (Proficient) Rubric
