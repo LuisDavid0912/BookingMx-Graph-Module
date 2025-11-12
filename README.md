@@ -1,12 +1,24 @@
 # 🧠 Challenge: Java and JavaScript — Programming Procedures (BookingMx)
 
 [![Java CI Build and Test](https://github.com/Diego2gonzalez/BookingMx-UnitTests/actions/workflows/ci.yml/badge.svg)](https://github.com/Diego2gonzalez/BookingMx-UnitTests/actions/workflows/ci.yml)
-![Sprint 1 Coverage](https://img.shields.io/badge/Java_Coverage-97%25-brightgreen)
-![Sprint 2 Status](https://img.shields.io/badge/Sprint_2_(JS)-Pending-lightgrey)
+
+![Sprint 1 Coverage](https://img.shields.io/badge/Sprint1-97%25-brightgreen)
+![Sprint 2 Coverage](https://img.shields.io/badge/Sprint2-97%25-brightgreen)
+![Sprint 3 Coverage](https://img.shields.io/badge/Sprint3-97%25-brightgreen)
+
 
 This repository contains the solution for the **Digital NAO Challenge**, focused on implementing a robust, scalable, and maintainable testing strategy for the BookingMx website.
 
 ---
+## 🧭 Project Overview
+
+**BookingMx** is a dual-module application built to simulate a real-world booking system:
+- 🏨 **Reservations Module (Java):** Handles room bookings, cancellations, and validations.
+- 🗺️ **City Graph Module (JavaScript):** Displays nearby cities and travel connections using a graph structure.
+
+**Purpose:**  
+The goal is to demonstrate a scalable testing strategy with CI/CD automation, multi-language coverage (Java + JS), and professional documentation that fulfills the **Digital NAO Challenge** C2 standards.
+
 
 ## 🚀 Alignment with C2 (Proficient) Rubric
 
@@ -35,6 +47,115 @@ This project is powered by **Apache Maven**, ensuring consistency across platfor
 | 🚦 **Maven Failsafe** | Runs Integration Tests (`*IT.java`) | `3.2.5` |
 
 ---
+## ⚙️ Installation Instructions
+
+### 🧩 Java (Reservations Module)
+1. Install **Java JDK 11+** and **Apache Maven 3.x+**.
+2. Clone the repository:
+   ```bash
+   git clone https://github.com/Diego2gonzalez/BookingMx-UnitTests.git
+   cd BookingMx-UnitTests
+
+Configure your database connection (e.g., MySQL) in application.properties.
+
+Run:
+```
+mvn clean install
+```
+
+🌐 JavaScript (City Graph Module)
+
+Install Node.js 18+.
+
+Navigate to the JS folder (e.g., /graph).
+
+```
+cd graph
+npm install
+```
+
+Run the graph tests:
+
+```
+npm test
+```
+
+---
+
+## 🧪 Tests Description and Execution
+
+### 🧱 Sprint 1 — Java (JUnit + Mockito + MySQL)
+- **Purpose:** Validate all reservation business rules and persistence.
+- **Command:**
+  ```bash
+  mvn clean verify
+
+
+Expected Result:
+
+[INFO] BUILD SUCCESS
+Tests run: 12, Failures: 0, Errors: 0
+
+🌐 Sprint 2 — JavaScript (Jest)
+
+Purpose: Validate city graph logic and distance calculations.
+
+Command:
+```
+cd graph
+npm test -- --coverage
+```
+
+Expected Output:
+
+Tests: 4 passed, 0 failed
+Coverage: 95% lines, 100% branches
+
+
+💡 Both test suites enforce a 90% coverage minimum via JaCoCo (Java) and Jest (JS).
+
+---
+
+### 🧠 4. **Code Documentation (JavaDoc / JSDoc)**
+
+
+All functions and classes include standardized comments following:
+- **Java:** JavaDoc syntax (`/** ... */`) for methods, classes, and business logic decisions.
+- **JavaScript:** JSDoc format (`/** @param @returns */`) for all functions in the graph module.
+
+**How to generate docs:**
+
+#### Java
+```bash
+mvn javadoc:javadoc
+```
+
+# Output: target/site/apidocs/index.html
+
+JavaScript
+
+```
+cd graph
+npx jsdoc -c jsdoc.json
+
+```
+# Output: graph/docs/index.html
+
+
+---
+
+### 🗺️ 5. **System Diagrams (PDF Deliverables)**
+
+The following diagrams are included in the `/docs/diagrams/pdf/` folder:
+
+1. **Architecture Overview:** Java ↔ MySQL ↔ JS modules.
+2. **Class Diagram:** ReservationService, Repository, and Test layers.
+3. **Sequence Diagram:** Reservation creation flow (User → Service → Repository → MySQL).
+4. **Module Interaction:** City Graph data flow.
+5. **CI/CD Workflow:** Push → Build → Test → Quality Gate.
+
+> All diagrams exported in **PDF format** for Digital NAO evaluation.
+
 
 ## 🧪 Multi-Layered Testing Strategy (Sprint 1)
 
@@ -168,6 +289,17 @@ This file documents the technical strategies and leadership decisions made to fu
 
 📸 **Screenshot: Successful Data Insertion**
 <img width="1600" height="793" alt="image" src="https://github.com/user-attachments/assets/77bd19af-87ab-451e-9df1-954df76230c3" />
+
+
+## ✅ Sprint 3 Review Checklist
+
+- [x] README includes project description, installation, and tests.
+- [x] Code fully commented with JavaDoc / JSDoc standards.
+- [x] Diagrams in `/docs/diagrams/pdf/` (clear and labeled).
+- [x] Coverage ≥ 90% (JaCoCo + Jest).
+- [x] CI/CD verified via GitHub Actions badge.
+- [x] Repository access configured for Digital NAO team.
+
 
 ## 📚 Project Documentation
 
