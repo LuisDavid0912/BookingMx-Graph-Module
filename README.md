@@ -19,6 +19,53 @@ This repository contains the solution for the **Digital NAO Challenge**, focused
 **Purpose:**  
 The goal is to demonstrate a scalable testing strategy with CI/CD automation, multi-language coverage (Java + JS), and professional documentation that fulfills the **Digital NAO Challenge** C2 standards.
 
+## 🗺️ System Diagrams
+
+<details>
+<summary><strong>Architecture Overview</strong></summary>
+
+<p align="center">
+  <img src="assets/diagrams/architecture.png" alt="Architecture Overview (Java, MySQL, JS, CI/CD)" width="900">
+</p>
+
+</details>
+
+<details>
+<summary><strong>Java Core — Class Diagram</strong></summary>
+
+<p align="center">
+  <img src="assets/diagrams/class-core.png" alt="Class Diagram: ReservationService, Repository, JdbcReservationRepository" width="900">
+</p>
+
+</details>
+
+<details>
+<summary><strong>Sequence — Create Reservation</strong></summary>
+
+<p align="center">
+  <img src="assets/diagrams/sequence-create-reservation.png" alt="Sequence Diagram: Create Reservation flow" width="900">
+</p>
+
+</details>
+
+<details>
+<summary><strong>JS Module Interaction</strong></summary>
+
+<p align="center">
+  <img src="assets/diagrams/js-module-interaction.png" alt="JS Module Interaction: validation and outputs" width="900">
+</p>
+
+</details>
+
+<details>
+<summary><strong>CI/CD Pipeline</strong></summary>
+
+<p align="center">
+  <img src="assets/diagrams/cicd-pipeline.png" alt="CI/CD Pipeline: push → build → tests → quality gates" width="900">
+</p>
+
+</details>
+
 
 ## 🚀 Alignment with C2 (Proficient) Rubric
 

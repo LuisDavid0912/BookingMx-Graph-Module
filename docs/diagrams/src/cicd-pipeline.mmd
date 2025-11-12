@@ -1,0 +1,25 @@
+%%{init: {"theme":"base", "themeVariables": {
+  "primaryColor": "#F2F2F2",
+  "secondaryColor": "#E6E6E6",
+  "tertiaryColor": "#D9D9D9",
+  "primaryTextColor": "#222222",
+  "lineColor": "#A0A0A0",
+  "background": "#FFFFFF",
+  "fontFamily": "Inter, Roboto, Arial"
+}}}%%
+flowchart LR
+  Dev[Developer] -->|push| GA[GitHub Actions]
+  GA --> J1["mvn clean verify\n(JUnit, Mockito, JaCoCo >= 90%)"]
+  GA --> J2["npm ci && npm test --coverage\n(Jest >= 90%)"]
+  J1 -->|pass| QG1[Quality Gate Java ✅]
+  J2 -->|pass| QG2[Quality Gate JS ✅]
+  QG1 --> Merge[Allowed to merge]
+  QG2 --> Merge
+
+  %% Styles
+  classDef actor fill:#FAFAFA,stroke:#BDBDBD,color:#222;
+  classDef step fill:#F0F0F0,stroke:#B5B5B5,color:#222;
+  classDef gate fill:#E8E8E8,stroke:#AFAFAF,color:#222;
+  class Dev actor;
+  class GA,J1,J2,Merge step;
+  class QG1,QG2 gate;

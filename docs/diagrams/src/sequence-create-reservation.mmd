@@ -1,0 +1,33 @@
+%%{init: {"theme":"base", "themeVariables": {
+  "primaryColor": "#EFEFEF",
+  "secondaryColor": "#E6E6E6",
+  "tertiaryColor": "#DCDCDC",
+  "primaryTextColor": "#222222",
+  "lineColor": "#A5A5A5",
+  "background": "#FFFFFF",
+  "fontFamily": "Inter, Roboto, Arial"
+}}}%%
+sequenceDiagram
+  autonumber
+  actor U as User
+  participant C as Controller
+  participant S as ReservationService
+  participant R as ReservationRepository
+  participant DB as MySQL
+
+  U->>C: POST /reservations (payload)
+  C->>S: validate & createReservation(request)
+  S->>R: isRoomAvailable(room, checkIn, checkOut)
+  R->>DB: SELECT availability…
+  DB-->>R: rows
+  alt available
+    S->>R: save(reservation)
+    R->>DB: INSERT reservation…
+    DB-->>R: id
+    R-->>S: Reservation
+    S-->>C: Reservation (201 Created)
+    C-->>U: JSON { id, dates, room }
+  else not available
+    S-->>C: RoomUnavailableException
+    C-->>U: 409 CONFLICT
+  end

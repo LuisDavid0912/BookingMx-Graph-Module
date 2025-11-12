@@ -1,0 +1,42 @@
+%%{init: {"theme":"base", "themeVariables": {
+  "primaryColor": "#EEEEEE",
+  "secondaryColor": "#DDDDDD",
+  "tertiaryColor": "#CCCCCC",
+  "primaryTextColor": "#222222",
+  "lineColor": "#A0A0A0",
+  "background": "#FFFFFF",
+  "fontFamily": "Inter, Roboto, Arial"
+}}}%%
+flowchart LR
+  %% Groups
+  subgraph Java[Java — Reservations Module]
+    direction LR
+    SVC([ReservationService])
+    REPO[[ReservationRepository / JdbcReservationRepository]]
+    DB[(MySQL)]
+    SVC --> REPO --> DB
+  end
+
+  subgraph JS[JavaScript — City Graph Module]
+    direction LR
+    GRAPH([CityGraph])
+    DATA[(cities.json)]
+    GRAPH --> DATA
+  end
+
+  CI[GitHub Actions CI/CD]
+  DEV([Developer])
+
+  DEV -- push --> CI
+  CI -- "mvn clean verify" --> Java
+  CI -- "npm test --coverage" --> JS
+
+  %% Styling (grises)
+  classDef group fill:#EFEFEF,stroke:#BDBDBD,color:#222,stroke-width:1px;
+  classDef core fill:#F7F7F7,stroke:#B0B0B0,color:#222,stroke-width:1px;
+  classDef storage fill:#E6E6E6,stroke:#9E9E9E,color:#222,stroke-width:1px;
+  classDef infra fill:#EDEDED,stroke:#B3B3B3,color:#222,stroke-width:1px;
+
+  class Java,JS group;
+  class SVC,REPO,GRAPH,DEV,CI core;
+  class DB,DATA storage;

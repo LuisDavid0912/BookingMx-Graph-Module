@@ -1,0 +1,21 @@
+%%{init: {"theme":"base", "themeVariables": {
+  "primaryColor": "#F7F7F7",
+  "secondaryColor": "#EBEBEB",
+  "tertiaryColor": "#DFDFDF",
+  "primaryTextColor": "#222222",
+  "lineColor": "#B0B0B0",
+  "background": "#FFFFFF",
+  "fontFamily": "Inter, Roboto, Arial"
+}}}%%
+flowchart TD
+  A["Input: startCity"] -->|validate| B{graph contains startCity}
+  B -->|Yes| C[Collect neighbors]
+  C --> D[Map distances]
+  D --> E[Return list of nearby cities]
+  B -->|No| F[Return empty list]
+
+  %% Gray styles
+  classDef node fill:#F7F7F7,stroke:#B0B0B0,color:#222,stroke-width:1px;
+  classDef decision fill:#EDEDED,stroke:#A8A8A8,color:#222,stroke-width:1px;
+  class A,C,D,E,F node;
+  class B decision;

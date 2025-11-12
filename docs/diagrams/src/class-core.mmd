@@ -1,0 +1,50 @@
+%%{init: {"theme":"base", "themeVariables": {
+  "primaryColor": "#F0F0F0",
+  "secondaryColor": "#E2E2E2",
+  "tertiaryColor": "#D4D4D4",
+  "primaryTextColor": "#222222",
+  "lineColor": "#9C9C9C",
+  "background": "#FFFFFF",
+  "fontFamily": "Inter, Roboto, Arial"
+}}}%%
+classDiagram
+  direction LR
+
+  class ReservationService {
+    +createReservation(req: ReservationRequest): Reservation
+    +cancelReservation(id: Long): void
+    +isRoomAvailable(room: int, in: LocalDate, out: LocalDate): boolean
+  }
+
+  class ReservationRepository {
+    <<interface>>
+    +findById(id: Long): Optional~Reservation~
+    +save(res: Reservation): Reservation
+    +isRoomAvailable(room: int, in: LocalDate, out: LocalDate): boolean
+  }
+
+  class JdbcReservationRepository {
+    -dataSource: DataSource
+    +findById(id: Long): Optional~Reservation~
+    +save(res: Reservation): Reservation
+    +isRoomAvailable(room: int, in: LocalDate, out: LocalDate): boolean
+  }
+
+  class Reservation {
+    +id: Long
+    +guestName: String
+    +roomNumber: int
+    +checkIn: LocalDate
+    +checkOut: LocalDate
+  }
+
+  class ReservationRequest {
+    +guestName: String
+    +roomNumber: int
+    +checkIn: LocalDate
+    +checkOut: LocalDate
+  }
+
+  ReservationService --> ReservationRepository : uses
+  JdbcReservationRepository ..|> ReservationRepository
+  JdbcReservationRepository --> Reservation : maps rows
