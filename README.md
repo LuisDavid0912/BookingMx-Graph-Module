@@ -1,6 +1,5 @@
 # 🧠 Challenge: Java and JavaScript — Programming Procedures (BookingMx)
 
-[![Java CI Build and Test](https://github.com/Diego2gonzalez/BookingMx-UnitTests/actions/workflows/ci.yml/badge.svg)](https://github.com/Diego2gonzalez/BookingMx-UnitTests/actions/workflows/ci.yml)
 
 ![Sprint 1 Coverage](https://img.shields.io/badge/Sprint1-97%25-brightgreen)
 ![Sprint 2 Coverage](https://img.shields.io/badge/Sprint2-97%25-brightgreen)
